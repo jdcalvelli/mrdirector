@@ -2,6 +2,24 @@ use turbo::borsh;
 use turbo::borsh::BorshSerialize;
 use turbo::borsh::BorshDeserialize;
 
+/// A state object to hold information required by the `mrdirector` package.
+///
+/// The local state object created in `turbo init!{}` should contain an instance of this.
+///
+/// # Example
+/// ```rust
+/// turbo::init! {
+/// 	struct GameState {
+/// 		...
+/// 		...
+/// 		director_state: mrdirector::DirectorState
+/// 	} = Self {
+/// 		...
+/// 		...
+/// 		director_state: mrdirector::DirectorState::new(std::include_str!("../scripts/script.director"))
+/// 	}
+/// }
+/// ```
 #[derive(Debug, Clone, PartialEq, BorshDeserialize, BorshSerialize)]
 pub struct DirectorState {
 	pub speaking_char: String,
@@ -12,6 +30,14 @@ pub struct DirectorState {
 }
 
 impl DirectorState {
+	/// This function takes an argument a `&' static str` which is the path to your `script.director` file.
+	///
+	/// It returns a DirectorState object.
+	///
+	/// # Example
+	/// ```rust
+	/// mrdirector::DirectorState::new(std::include_str!("../scripts/script.director"))
+	/// ```
 	pub fn new(script_path: &str) -> Self {
 		Self {
 			script_finished: false,

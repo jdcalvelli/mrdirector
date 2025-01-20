@@ -1,10 +1,24 @@
 use turbo::prelude::*;
 
+/// Options as to where to put the textbox used to display the current line.
+///
+/// TOP: Top of the screen as defined by `[resolution]` in `turbo::cfg!`.
+///
+/// BOTTOM: Bottom of the screen as defined by `[resolution]` in `turbo::cfg!`. More traditional Visual Novel style.
 pub enum TextOverlayLocation {
 	TOP,
 	BOTTOM
 }
 
+/// An object to hold data associated with the TextOverlay that displays the assessed lines from the `script.director` file.
+///
+/// Used in conjunction with the `assess_current_line` function.
+///
+/// # Example
+/// mrdirector::assess_current_line(
+///     &mut state.director_state, 
+///     mrdirector::TextOverlay::new(mrdirector::TextOverlayLocation::BOTTOM, 0x000000ff, 0xffffffff)
+/// );
 pub struct TextOverlay {
 	pub location: TextOverlayLocation,
 	pub overlay_color: u32,
@@ -14,6 +28,7 @@ pub struct TextOverlay {
 }
 
 impl TextOverlay {
+	/// This function returns a TextOverlay object to be used with the `assess_current_line` function.
 	pub fn new(loc:TextOverlayLocation, overlay_color_arg:u32, text_color_arg:u32) -> Self {
 		Self {
 			location: loc,

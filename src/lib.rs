@@ -15,8 +15,5 @@ mod director_state;
 mod text_overlay;
 
 pub use assess_current_line::*;
-pub use evaluate_choice::*;
-pub use evaluate_command::*;
-pub use print_current_line::*;
 pub use director_state::*;
 pub use text_overlay::*;
