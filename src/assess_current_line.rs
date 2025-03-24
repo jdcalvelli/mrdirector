@@ -23,6 +23,7 @@ pub fn assess_current_line(state:&mut DirectorState, text_overlay: TextOverlay) 
         match &state.lines[state.current_line] {
             line if line.starts_with("<<") || line.starts_with("#") || line == "" => {
                 // is a passage, send, comment, or blank line, so increment on to next line
+                // some precompilation step to get rid of all of the blank lines and comments?
                 state.current_line += 1;
             },
             line if line.starts_with(">>") => {

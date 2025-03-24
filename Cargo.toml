@@ -1,11 +1,11 @@
 [package]
 name = "mrdirector"
-version = "0.1.2"
+version = "0.2.0"
 edition = "2021"
-authors = ["pklwrks LLC <jd@pklwrks.xyz>"]
+authors = ["pklwrks LLC <jd@pklwrks.dev>"]
 description = "A narrative game development package for the Turbo Game Engine."
 repository = "https://github.com/jdcalvelli/mrdirector"
 license = "GPL-3.0-or-later"
 
 [dependencies]
-turbo = { package = "turbo-genesis-sdk", version = "1.6.2" }
+turbo = { package = "turbo-genesis-sdk", version = ">=2.0.0" }

@@ -49,12 +49,12 @@ impl TextOverlay {
 			},
 			TextOverlayLocation::BOTTOM => {
 				tb_x = 0;
-				tb_y = (canvas_size()[1] as u16) - (23 + 2 * self.tb_padding);
+				tb_y = (resolution().1 as u16) - (23 + 2 * self.tb_padding);
 			}
 		}
 		
 		rect!(
-			w = canvas_size()[0] as u16,
+			w = resolution().0 as u16,
 			h = 23 + 2 * self.tb_padding,
 			x = tb_x,
 			y = tb_y,
@@ -64,7 +64,8 @@ impl TextOverlay {
 			dialogue[1].as_str(),
 			x = tb_x + self.tb_padding,
 			y = tb_y + self.tb_padding,
-			color = self.text_color
+			color = self.text_color,
+			font = "small"
 		);
 	}
 	pub fn render_choice_textbox(self, choices: &Vec<String>) -> () {
@@ -78,12 +79,12 @@ impl TextOverlay {
 			},
 			TextOverlayLocation::BOTTOM => {
 				tb_x = 0;
-				tb_y = (canvas_size()[1] as u16) - (23 + 2 * self.tb_padding);
+				tb_y = (resolution().1 as u16) - (23 + 2 * self.tb_padding);
 			}
 		}
 		
 		rect!(
-			w = canvas_size()[0] as u16,
+			w = resolution().0 as u16,
 			h = 23 + 2 * self.tb_padding,
 			x = tb_x,
 			y = tb_y,
@@ -104,17 +105,18 @@ impl TextOverlay {
 			match index {
 				0 => {
 					text!(
-						format!("{} {}", self.choice_options.0, choice_sanitized).as_str(),
+						"{} {}", self.choice_options.0, choice_sanitized;
 						x = tb_x + self.tb_padding,
 						y = tb_y + self.tb_padding,
-						color = self.text_color
+						color = self.text_color,
+						font = "medium"
 					);
 					
 					if choice.starts_with("~") {
 						path!(
 							start = (tb_x + self.tb_padding, tb_y + self.tb_padding + 3), 
-							end = (canvas_size()[0] as u16 / 2 - self.tb_padding, tb_y + self.tb_padding + 3),
-							width = 1,
+							end = (resolution().0 as u16 / 2 - self.tb_padding, tb_y + self.tb_padding + 3),
+							size = 1,
 							color = self.text_color,
 						);
 					}
@@ -122,17 +124,18 @@ impl TextOverlay {
 				},
 				1 => {
 					text!(
-						format!("{} {}", self.choice_options.1, choice_sanitized).as_str(),
+						"{} {}", self.choice_options.1, choice_sanitized;
 						x = tb_x + self.tb_padding,
 						y = tb_y + 16 + self.tb_padding,
-						color = self.text_color
+						color = self.text_color,
+						font = "medium"
 					);
 					
 					if choice.starts_with("~") {
 						path!(
 							start = (tb_x + self.tb_padding, tb_y + 16 + self.tb_padding + 3), 
-							end = (canvas_size()[0] as u16 / 2 - self.tb_padding, tb_y + 16 + self.tb_padding + 3),
-							width = 1,
+							end = (resolution().0 as u16 / 2 - self.tb_padding, tb_y + 16 + self.tb_padding + 3),
+							size = 1,
 							color = self.text_color,
 						);
 					}
@@ -140,34 +143,36 @@ impl TextOverlay {
 				},
 				2 => {
 					text!(
-						format!("{} {}", self.choice_options.2, choice_sanitized).as_str(),
-						x = canvas_size()[0] as u16 / 2 + self.tb_padding, 
+						"{} {}", self.choice_options.2, choice_sanitized;
+						x = resolution().0 as u16 / 2 + self.tb_padding, 
 						y = tb_y + self.tb_padding,
-						color = self.text_color
+						color = self.text_color,
+						font = "medium"
 					);
 					
 					if choice.starts_with("~") {
 						path!(
-							start = (canvas_size()[0] as u16 / 2 + self.tb_padding, tb_y + self.tb_padding + 3), 
-							end = (canvas_size()[0] as u16 - self.tb_padding, tb_y + self.tb_padding + 3),
-							width = 1,
+							start = (resolution().0 as u16 / 2 + self.tb_padding, tb_y + self.tb_padding + 3), 
+							end = (resolution().0 as u16 - self.tb_padding, tb_y + self.tb_padding + 3),
+							size = 1,
 							color = self.text_color,
 						);
 					}
 				},
 				3 => {
 					text!(
-						format!("{} {}", self.choice_options.3, choice_sanitized).as_str(),
-						x = canvas_size()[0] as u16 / 2 + self.tb_padding, 
+						"{} {}", self.choice_options.3, choice_sanitized;
+						x = resolution().0 as u16 / 2 + self.tb_padding, 
 						y = tb_y + 16 + self.tb_padding,
-						color = self.text_color
+						color = self.text_color,
+						font = "medium"
 					);
 					
 					if choice.starts_with("~") {
 						path!(
-							start = (canvas_size()[0] as u16 + self.tb_padding, tb_y + 16 + self.tb_padding + 3), 
-							end = (canvas_size()[0] as u16 - self.tb_padding, tb_y + 16 + self.tb_padding + 3),
-							width = 1,
+							start = (resolution().0 as u16 + self.tb_padding, tb_y + 16 + self.tb_padding + 3), 
+							end = (resolution().0 as u16 - self.tb_padding, tb_y + 16 + self.tb_padding + 3),
+							size = 1,
 							color = self.text_color,
 						);
 					}

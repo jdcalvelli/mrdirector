@@ -3,9 +3,7 @@
 //! to help streamline the creation of games with branching narratives
 //! warning: this project is in hyper omega alpha, so use at your own risk
 
-// need this for text overlay rs
-use turbo::cam;
-use turbo::canvas_size;
+// for text_overlay
 
 mod assess_current_line;
 mod evaluate_choice;
